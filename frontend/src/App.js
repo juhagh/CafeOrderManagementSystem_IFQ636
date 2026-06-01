@@ -10,6 +10,9 @@ import Cart from './pages/staff/Cart';
 import StaffDashboard from './pages/staff/StaffDashboard';
 import ActiveOrders from './pages/staff/ActiveOrders';
 import OrderDetail from './pages/staff/OrderDetail';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import MenuItemsList from './pages/admin/MenuItemsList';
+import MenuItemForm from './pages/admin/MenuItemForm';
 
 function App() {
     return (
@@ -23,42 +26,39 @@ function App() {
 
                         {/* Staff routes */}
                         <Route path="/staff/dashboard" element={
-                            <ProtectedRoute roles={['staff', 'admin']}>
-                                <StaffDashboard />
-                            </ProtectedRoute>
+                            <ProtectedRoute roles={['staff', 'admin']}><StaffDashboard /></ProtectedRoute>
                         } />
                         <Route path="/staff/menu" element={
-                            <ProtectedRoute roles={['staff', 'admin']}>
-                                <MenuBrowse />
-                            </ProtectedRoute>
+                            <ProtectedRoute roles={['staff', 'admin']}><MenuBrowse /></ProtectedRoute>
                         } />
                         <Route path="/staff/cart" element={
-                            <ProtectedRoute roles={['staff', 'admin']}>
-                                <Cart />
-                            </ProtectedRoute>
+                            <ProtectedRoute roles={['staff', 'admin']}><Cart /></ProtectedRoute>
                         } />
                         <Route path="/staff/orders" element={
-                            <ProtectedRoute roles={['staff', 'admin']}>
-                                <ActiveOrders />
-                            </ProtectedRoute>
+                            <ProtectedRoute roles={['staff', 'admin']}><ActiveOrders /></ProtectedRoute>
                         } />
                         <Route path="/staff/orders/:id" element={
-                            <ProtectedRoute roles={['staff', 'admin']}>
-                                <OrderDetail />
-                            </ProtectedRoute>
+                            <ProtectedRoute roles={['staff', 'admin']}><OrderDetail /></ProtectedRoute>
+                        } />
+
+                        {/* Admin routes */}
+                        <Route path="/admin/dashboard" element={
+                            <ProtectedRoute roles={['admin']}><AdminDashboard /></ProtectedRoute>
+                        } />
+                        <Route path="/admin/menu" element={
+                            <ProtectedRoute roles={['admin']}><MenuItemsList /></ProtectedRoute>
+                        } />
+                        <Route path="/admin/menu/new" element={
+                            <ProtectedRoute roles={['admin']}><MenuItemForm /></ProtectedRoute>
+                        } />
+                        <Route path="/admin/menu/:id/edit" element={
+                            <ProtectedRoute roles={['admin']}><MenuItemForm /></ProtectedRoute>
                         } />
 
                         {/* Kitchen routes */}
                         <Route path="/kitchen/*" element={
                             <ProtectedRoute roles={['kitchen', 'admin']}>
                                 <div>Kitchen — coming soon</div>
-                            </ProtectedRoute>
-                        } />
-
-                        {/* Admin routes */}
-                        <Route path="/admin/*" element={
-                            <ProtectedRoute roles={['admin']}>
-                                <div>Admin — coming soon</div>
                             </ProtectedRoute>
                         } />
 
