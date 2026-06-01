@@ -1,45 +1,53 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import ProtectedRoute from './components/ProtectedRoute';
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Profile from './pages/Profile';
 import Unauthorized from './pages/Unauthorized';
+import MenuBrowse from './pages/staff/MenuBrowse';
+import Cart from './pages/staff/Cart';
 
 function App() {
     return (
         <AuthProvider>
-            <Router>
-                <Routes>
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/unauthorized" element={<Unauthorized />} />
+            <CartProvider>
+                <Router>
+                    <Routes>
+                        <Route path="/login" element={<Login />} />
+                        <Route path="/register" element={<Register />} />
+                        <Route path="/unauthorized" element={<Unauthorized />} />
 
-                    {/* Staff routes */}
-                    <Route path="/staff/*" element={
-                        <ProtectedRoute roles={['staff', 'admin']}>
-                            <Profile />
-                        </ProtectedRoute>
-                    } />
+                        {/* Staff routes */}
+                        <Route path="/staff/menu" element={
+                            <ProtectedRoute roles={['staff', 'admin']}>
+                                <MenuBrowse />
+                            </ProtectedRoute>
+                        } />
+                        <Route path="/staff/cart" element={
+                            <ProtectedRoute roles={['staff', 'admin']}>
+                                <Cart />
+                            </ProtectedRoute>
+                        } />
 
-                    {/* Kitchen routes */}
-                    <Route path="/kitchen/*" element={
-                        <ProtectedRoute roles={['kitchen', 'admin']}>
-                            <Profile />
-                        </ProtectedRoute>
-                    } />
+                        {/* Kitchen routes */}
+                        <Route path="/kitchen/*" element={
+                            <ProtectedRoute roles={['kitchen', 'admin']}>
+                                <div>Kitchen — coming soon</div>
+                            </ProtectedRoute>
+                        } />
 
-                    {/* Admin routes */}
-                    <Route path="/admin/*" element={
-                        <ProtectedRoute roles={['admin']}>
-                            <Profile />
-                        </ProtectedRoute>
-                    } />
+                        {/* Admin routes */}
+                        <Route path="/admin/*" element={
+                            <ProtectedRoute roles={['admin']}>
+                                <div>Admin — coming soon</div>
+                            </ProtectedRoute>
+                        } />
 
-                    {/* Default redirect */}
-                    <Route path="*" element={<Navigate to="/login" replace />} />
-                </Routes>
-            </Router>
+                        <Route path="*" element={<Navigate to="/login" replace />} />
+                    </Routes>
+                </Router>
+            </CartProvider>
         </AuthProvider>
     );
 }

@@ -1,9 +1,16 @@
 import axios from 'axios';
 
-const axiosInstance = axios.create({
-  baseURL: 'http://localhost:5001', // local
-  //baseURL: 'http://3.26.96.188:5001', // live
-  headers: { 'Content-Type': 'application/json' },
+const api = axios.create({
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5001/api',
 });
 
-export default axiosInstance;
+// Attach JWT token to every request automatically
+api.interceptors.request.use((config) => {
+  const user = JSON.parse(localStorage.getItem('user'));
+  if (user?.token) {
+    config.headers.Authorization = `Bearer ${user.token}`;
+  }
+  return config;
+});
+
+export default api;
