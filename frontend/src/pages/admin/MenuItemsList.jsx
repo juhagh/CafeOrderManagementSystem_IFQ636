@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
 import AdminNavbar from '../../components/AdminNavbar';
@@ -11,11 +11,7 @@ const MenuItemsList = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetchItems();
-    }, [category]);
-
-    const fetchItems = async () => {
+    const fetchItems = useCallback(async () => {
         try {
             const params = category !== 'all' ? { category } : {};
             const { data } = await api.get('/menu', { params });
@@ -25,7 +21,11 @@ const MenuItemsList = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [category]);
+
+    useEffect(() => {
+        fetchItems();
+    }, [fetchItems]);
 
     const toggleAvailable = async (item) => {
         try {

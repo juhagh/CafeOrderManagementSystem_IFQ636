@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
 import StatusBadge from '../../components/StatusBadge';
@@ -18,7 +18,7 @@ const OrderDetail = () => {
     const [acting, setActing] = useState(false);
     const navigate = useNavigate();
 
-    const fetchOrder = async () => {
+    const fetchOrder = useCallback(async () => {
         try {
             const { data } = await api.get(`/orders/${id}`);
             setOrder(data);
@@ -27,9 +27,9 @@ const OrderDetail = () => {
         } finally {
             setLoading(false);
         }
-    };
+    }, [id]);
 
-    useEffect(() => { fetchOrder(); }, [id]);
+    useEffect(() => { fetchOrder(); }, [fetchOrder]);
 
     const handleAction = async (newStatus) => {
         try {

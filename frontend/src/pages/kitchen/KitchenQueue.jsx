@@ -2,7 +2,6 @@ import { useState, useEffect, useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import api from '../../axiosConfig';
 import KitchenNavbar from '../../components/KitchenNavbar';
-import StatusBadge from '../../components/StatusBadge';
 
 const COLUMNS = [
     { status: 'queued',    label: 'NEW',       accent: '#2563EB' },
@@ -49,8 +48,6 @@ const KitchenQueue = () => {
         }
     };
 
-    const getNextStatus = (s) => ({ queued: 'preparing', preparing: 'ready' }[s]);
-    const getActionLabel = (s) => ({ queued: 'Start →', preparing: 'Mark Ready →' }[s]);
     const ordersForColumn = (status) => orders.filter(o => o.status === status);
 
     return (
