@@ -11,10 +11,6 @@ const MenuItemsList = () => {
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
-    useEffect(() => {
-        fetchItems();
-    }, [category]);
-
     const fetchItems = useCallback(async () => {
         try {
             const params = category !== 'all' ? { category } : {};
@@ -26,6 +22,10 @@ const MenuItemsList = () => {
             setLoading(false);
         }
     }, [category]);
+
+    useEffect(() => {
+        fetchItems();
+    }, [fetchItems]);
 
     const toggleAvailable = async (item) => {
         try {

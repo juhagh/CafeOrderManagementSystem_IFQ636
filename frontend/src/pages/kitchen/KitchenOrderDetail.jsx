@@ -22,7 +22,7 @@ const KitchenOrderDetail = () => {
         }
     }, [id]);
 
-    useEffect(() => { fetchOrder(); }, [id]);
+    useEffect(() => { fetchOrder(); }, [fetchOrder]);
 
     const handleAction = async (newStatus) => {
         try {
