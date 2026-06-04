@@ -1,13 +1,13 @@
 <mxfile host="Electron" pages="9">
   <diagram name="01 - Use Case Diagram" id="tlM_Vh05ChVW_6vmn-gC">
-    <mxGraphModel dx="2361" dy="1019" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+    <mxGraphModel dx="1546" dy="1031" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
         <mxCell id="LclNkLLCFihzPisgNpVS-1" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" value="Staff" vertex="1">
           <mxGeometry height="60" width="30" x="90" y="300" as="geometry" />
         </mxCell>
-        <mxCell id="LclNkLLCFihzPisgNpVS-4" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" value="Manager" vertex="1">
+        <mxCell id="LclNkLLCFihzPisgNpVS-4" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" value="Admin" vertex="1">
           <mxGeometry height="60" width="30" x="90" y="840" as="geometry" />
         </mxCell>
         <mxCell id="LclNkLLCFihzPisgNpVS-6" parent="1" style="shape=rect;html=1;verticalAlign=top;fontStyle=1;whiteSpace=wrap;align=center;" value="Cafe Order Management System" vertex="1">
@@ -137,6 +137,27 @@
           <mxGeometry relative="1" width="160" as="geometry">
             <mxPoint x="120" y="330" as="sourcePoint" />
             <mxPoint x="780" y="484.9999999999998" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WwPHNRVedKfMnxgSvdD5-1" parent="1" style="shape=umlActor;html=1;verticalLabelPosition=bottom;verticalAlign=top;align=center;" value="Kitchen" vertex="1">
+          <mxGeometry height="60" width="30" x="1170" y="520" as="geometry" />
+        </mxCell>
+        <mxCell id="WwPHNRVedKfMnxgSvdD5-6" edge="1" parent="1" source="LclNkLLCFihzPisgNpVS-8" style="edgeStyle=none;html=1;endArrow=none;verticalAlign=bottom;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="1020" y="260" as="sourcePoint" />
+            <mxPoint x="1160" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WwPHNRVedKfMnxgSvdD5-7" edge="1" parent="1" source="LclNkLLCFihzPisgNpVS-9" style="edgeStyle=none;html=1;endArrow=none;verticalAlign=bottom;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="470" y="430" as="sourcePoint" />
+            <mxPoint x="1160" y="550" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="WwPHNRVedKfMnxgSvdD5-8" edge="1" parent="1" source="LclNkLLCFihzPisgNpVS-10" style="edgeStyle=none;html=1;endArrow=none;verticalAlign=bottom;rounded=0;exitX=1;exitY=1;exitDx=0;exitDy=0;" value="">
+          <mxGeometry relative="1" width="160" as="geometry">
+            <mxPoint x="1050" y="520" as="sourcePoint" />
+            <mxPoint x="1160" y="550" as="targetPoint" />
           </mxGeometry>
         </mxCell>
       </root>
