@@ -42,13 +42,13 @@ describe('Order API', () => {
             expect(res.statusCode).toBe(401);
         });
 
-        it('should create order with empty items', async () => {
+        it('should reject an order with no items', async () => {
             expect(staffToken).toBeDefined();
             const res = await request(app)
                 .post('/api/orders')
                 .set('Authorization', `Bearer ${staffToken}`)
                 .send({ items: [], notes: '' });
-            expect(res.statusCode).toBe(201);
+            expect(res.statusCode).toBe(400);
         });
     });
 

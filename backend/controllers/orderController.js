@@ -6,6 +6,10 @@ const createOrder = async (req, res) => {
     try {
         const { items, notes } = req.body;
 
+        if (!Array.isArray(items) || items.length === 0) {
+            return res.status(400).json({ message: 'An order must contain at least one item' });
+        }
+
         // Fetch each menu item to snapshot name+price
         const orderItems = await Promise.all(items.map(async (item) => {
             const menuItem = await MenuItem.findById(item.menuItemId);
